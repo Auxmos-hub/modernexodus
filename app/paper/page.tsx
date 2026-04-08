@@ -29,39 +29,48 @@ export default function PaperPage() {
         <p className="text-xs font-medium text-stone-400 uppercase tracking-widest mb-6">
           Contents
         </p>
-        <ol className="space-y-2 text-sm text-stone-600 columns-2">
+        <ol className="space-y-2 text-sm columns-2">
           {[
-            "Preface",
-            "The Lord Remembers",
-            "Assurance and Encouragement",
-            "Let My People Go",
-            "Pharaoh's Hardened Heart",
-            "A Time for War",
-            "The Modern Day Pharaoh",
-            "Forced Labor",
-            "Money",
-            "Purchasing Power",
-            "Inflation",
-            "Labor Then; Labor Now",
-            "Attention",
-            "It Can't Be That Bad",
-            "Bringing It Home",
-            "The Lord Sees",
-            "The Printing Press",
-            "Idols and Arks",
-            "Connecting the Dots",
-            "Plundering the Egyptians",
-            "Providence",
-            "Decisions",
-            "Building a Dwelling Place",
-            "Bitcoin",
-            "Conclusion",
+            { title: "Preface", id: "preface" },
+            { title: "The Lord Remembers", id: "the-lord-remembers" },
+            { title: "Assurance and Encouragement", id: "assurance" },
+            { title: "Let My People Go", id: "let-my-people-go" },
+            { title: "Pharaoh's Hardened Heart", id: "pharaohs-hardened-heart" },
+            { title: "A Time for War", id: "a-time-for-war" },
+            { title: "The Modern Day Pharaoh", id: "the-modern-day-pharaoh" },
+            { title: "Forced Labor", id: "forced-labor" },
+            { title: "Money", id: "money" },
+            { title: "Purchasing Power", id: "purchasing-power" },
+            { title: "Inflation", id: "inflation" },
+            { title: "Labor Then; Labor Now", id: "labor-then-labor-now" },
+            { title: "Attention", id: "attention" },
+            { title: "It Can't Be That Bad", id: null },
+            { title: "Bringing It Home", id: "bringing-it-home" },
+            { title: "The Lord Sees", id: "the-lord-sees" },
+            { title: "The Printing Press", id: "the-printing-press" },
+            { title: "Idols and Arks", id: "idols-and-arks" },
+            { title: "Connecting the Dots", id: "connecting-the-dots" },
+            { title: "Plundering the Egyptians", id: "plundering-the-egyptians" },
+            { title: "Providence", id: null },
+            { title: "Decisions", id: null },
+            { title: "Building a Dwelling Place", id: null },
+            { title: "Bitcoin", id: "bitcoin" },
+            { title: "Conclusion", id: "conclusion" },
           ].map((section, i) => (
-            <li key={section} className="flex items-start gap-2">
-              <span className="text-stone-300 font-mono text-xs mt-0.5 tabular-nums">
+            <li key={section.title} className="flex items-start gap-2">
+              <span className="text-stone-300 font-mono text-xs mt-0.5 tabular-nums shrink-0">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span>{section}</span>
+              {section.id ? (
+                <a
+                  href={`#${section.id}`}
+                  className="text-stone-600 hover:text-stone-900 transition-colors"
+                >
+                  {section.title}
+                </a>
+              ) : (
+                <span className="text-stone-300">{section.title}</span>
+              )}
             </li>
           ))}
         </ol>
