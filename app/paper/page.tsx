@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export const metadata = {
   title: "The Paper — Modern Exodus",
   description:
@@ -44,16 +46,16 @@ export default function PaperPage() {
             { title: "Inflation", id: "inflation" },
             { title: "Labor Then; Labor Now", id: "labor-then-labor-now" },
             { title: "Attention", id: "attention" },
-            { title: "It Can't Be That Bad", id: null },
+            { title: "It Can't Be That Bad", id: "it-cant-be-that-bad" },
             { title: "Bringing It Home", id: "bringing-it-home" },
             { title: "The Lord Sees", id: "the-lord-sees" },
             { title: "The Printing Press", id: "the-printing-press" },
             { title: "Idols and Arks", id: "idols-and-arks" },
             { title: "Connecting the Dots", id: "connecting-the-dots" },
             { title: "Plundering the Egyptians", id: "plundering-the-egyptians" },
-            { title: "Providence", id: null },
-            { title: "Decisions", id: null },
-            { title: "Building a Dwelling Place", id: null },
+            { title: "Providence", id: "providence" },
+            { title: "Decisions", id: "decisions" },
+            { title: "Building a Dwelling Place", id: "building-a-dwelling-place" },
             { title: "Bitcoin", id: "bitcoin" },
             { title: "Conclusion", id: "conclusion" },
           ].map((section, i) => (
@@ -347,6 +349,11 @@ export default function PaperPage() {
             the central bank in 1913. That means that 97% of the human time and energy deposited in
             1913 was taken from those who made the initial deposit.
           </p>
+          <FigureImage
+            src="/paper/img-004.png"
+            alt="A Dollar's Worth: Purchasing Power of the U.S. Dollar"
+            caption="A Dollar's Worth — Purchasing Power of the U.S. Dollar"
+          />
           <p>
             Inflation occurs primarily through monetary expansion and credit creation. The logical
             question: where does the power of newly created money come from? Consider a swimming pool
@@ -387,6 +394,11 @@ export default function PaperPage() {
             by depegging the dollar from a gold standard. After the gold standard was dropped there
             was nothing left to constrain the creation of new money by central banks.
           </p>
+          <FigureImage
+            src="/paper/img-003.png"
+            alt="Workers produced much more, but typical workers' pay lagged far behind"
+            caption="Workers produced much more, but typical workers' pay lagged far behind (1948–2013)"
+          />
         </Section>
 
         <Section id="attention" title="Attention">
@@ -413,6 +425,65 @@ export default function PaperPage() {
           </p>
         </Section>
 
+        <Section id="it-cant-be-that-bad" title="It Can't Be That Bad">
+          <p>
+            A common objection to drawing a parallel between the condition of the Israelites enslaved
+            existence in Egypt to the condition of, lets say, a modern day blue collar worker living
+            in the United States might be that the loss of time and energy is nowhere near comparable
+            between the two. An objective presentation of the data will leave the reader free to draw
+            their own conclusions. The intent of this work is not to be overly technical and nuanced
+            as it pertains to the metrics, mechanics, and idiosyncrasies of the modern day monetary
+            system, but rather provide just enough of a high-level overview for the reader to be able
+            to make sense of the systemic monetary (read: life) oppression that is intentionally
+            shrouded in mystery. With that said, the data presented in this work is an attempt to
+            most appropriately synthesize multiple data points from several sources into a digestible
+            form.
+          </p>
+          <p>
+            The data that is commonly referenced when it concerns the measure (or rate) of inflation
+            is called the Consumer Price Index (CPI). Though this index is utterly flawed by any
+            metric, this is the standard and, for the sake of brevity and simplicity, the following
+            assessments in this section will reference the CPI without qualification. If people ask
+            what the rate of inflation is or if someone is making a news announcement in reference to
+            rising or falling inflation, this is the number referenced. The chart below depicts how
+            the information is typically presented.
+          </p>
+          <FigureImage
+            src="/paper/img-000.png"
+            alt="Consumer Price Index for All Urban Consumers: All Items in U.S. City Average"
+            caption="Consumer Price Index for All Urban Consumers: All Items in U.S. City Average"
+          />
+          <p>
+            At the time of writing, US Consumer Price Index YoY is at 3.67%, compared to 3.18% last
+            month. Without knowing what the data is saying, 3.67% might seem inconsequential, but
+            it's important to recognize that this is a year over year (YoY) metric. The US Inflation
+            Rate is the percentage which a chosen basket of goods and services purchased in the US
+            increases in price over a year. Meaning, at the time of writing, the goods and services
+            in the measured basket of goods are, on average, 3.67% more expensive than they were 12
+            months ago. That number may still appear small, but what is not taken into account here
+            is the compounding effect of inflation over time.
+          </p>
+          <p>
+            Compounding interest is something people reading this are likely to be more familiar
+            with. Compound interest is calculated based on the principal amount initially invested
+            plus the accumulated interest of previous periods, and thus can be regarded as "interest
+            you earn on interest." The same idea works in the opposite direction for compounding
+            inflation. The YoY rate of inflation is currently 3.67%, but the chart above isn't
+            telling the whole story. There is 3.67% more inflation today than there was a year ago,
+            but there was inflation last year too, and the year before that, and the year before
+            that, and so on. The idea is that inflation is compounding exponentially, meaning that it
+            builds on itself over time at an increasingly rapid rate. The central bank targeting a 2%
+            inflation rate might appear unassuming, but targeting a 2% rate of inflation every year
+            for 50 years has significant compounding effects. Inflation is more accurately presented
+            over a longer time horizon to provide the proper perspective.
+          </p>
+          <FigureImage
+            src="/paper/img-001.png"
+            alt="Cumulative Inflation 1913 - 2022"
+            caption="Cumulative Inflation 1913 – 2022"
+          />
+        </Section>
+
         <Section id="bringing-it-home" title="Bringing It Home">
           <p>
             The synopsis:{" "}
@@ -425,6 +496,11 @@ export default function PaperPage() {
             everyone holding US dollars was diluted by 35%. Their accumulated "life's savings"
             (intended literally here) was diluted (read: stolen) by 35% of the whole.
           </p>
+          <FigureImage
+            src="/paper/img-002.png"
+            alt="M2 Money Supply"
+            caption="M2 Money Supply (FRED)"
+          />
           <p>
             The nature of the dilution being subtle and ubiquitous makes it very difficult to object
             to or even become aware of. The idea harkens to the boiling frog syndrome. If a frog is
@@ -546,6 +622,159 @@ export default function PaperPage() {
           </p>
         </Section>
 
+        <Section id="providence" title="Providence">
+          <p>
+            The canonical Exodus story leads with the recurring and overwhelming display of
+            providence that then leads to the receiving of the gold on their way out of Egypt. The
+            saving, providential power of God is undeniable in how it manifested itself in the
+            display of decisive and mighty plagues. Moreover, the Bible makes it clear that the
+            display of the first three plagues affected the Israelites as well as the Egyptians. The
+            Israelites were subjected to the first three plagues but shielded from the rest; which
+            communicates that there's something inescapable about providence and reckoning even for
+            the oppressed. There's a measure of inescapable providence simply due to proximity,
+            namely proximity to the tyrannical oppressors. The overarching principle is something
+            like: though His people are oppressed, the Lord has them experience an appropriate
+            measure of the judgment collectively, alongside their oppressors, to bring about a
+            shared experiential solidification of conviction in the Lord's seriousness concerning
+            His judgements. He apportions the appropriate amount of universal judgment commensurate
+            with what His people need as an inoculation of sorts, but He shields them from the brunt
+            of it. By carefully "injecting" a measure of the consequences (the plagues) of the evil
+            of the Egyptians into His people, He hopes to inoculate them against the evil of
+            tyranny; "In wrath (He) remembers mercy."
+          </p>
+          <p>
+            The mysterious nature of providence alone combined with peculiarities in how it is
+            experienced personally leaves room for its entrance into the story of the Modern Exodus.
+            As per the Exodus story, the providential hand of God slowly destabilized the order of
+            systemic oppression in Egypt. With consensus concerning the modern felt reality being
+            something akin to an overall societal destabilization, it's worth considering whether or
+            not a portion of that destabilization might be rightly attributed to the providential
+            hand of God. The Lord has the ability to exercise discretion and selectivity when
+            exercising His sovereign judgment, and therefore could very well be in the middle of
+            exercising His judgment even now in opposition to the tyrannical oppression of the hour.
+            The significance in proposing that the unraveling might be the Lord's doing is that it
+            further supports the notion that we may very well be in the middle of a Modern Exodus.
+            This isn't intended to write off the direct consequences of sin or the principle of
+            sowing and reaping, it is simply to add an additional avenue of possibility concerning
+            the unraveling we're experiencing. The reality of things is likely a differentiated
+            mixture of a multiplicity of contributing factors, but chief among them may very well be
+            His hand in direct response to tyranny.
+          </p>
+        </Section>
+
+        <Section id="decisions" title="Decisions">
+          <p>
+            As deciphered from the text, the story of the Exodus is one where the Israelites found
+            themselves enslaved and powerless, consequently needing the saving power of God to
+            deliver them apart from even the smallest thing they might be able to obey and thus
+            "contribute." With that said, there are two things that the Israelites do in Egypt
+            during the Exodus that have a significant impact on their rescuing. The first was the
+            decision of whether or not to put the blood of the lamb on their doorposts in order to
+            survive the final plague, and the second was the decision of whether or not to ask the
+            Egyptians for gold as they made their way out of Egypt. Both decisions would have had
+            significant consequences had the Israelites made the wrong decision.
+          </p>
+          <p>
+            In a tyranny, you have to differentiate yourself lest you intentionally or
+            unintentionally become consumed by the nature of that system, the nature of the "gods of
+            Egypt" (Exodus 12:12). There's a sense in which you can't make that distinction on your
+            own accord. That's why you can't put your own blood on the doorpost, it requires
+            something higher and outside of yourself to serve as a sacrifice sufficient to cover
+            that part of you that has been infected by "the gods of Egypt". The message behind the
+            blood on the doorpost in Exodus is: "make the proper sacrifice or the impropriety of
+            your own life will have to stand on its own accord, and thus be consumed". The blood on
+            the doorpost is put there in faith, not necessarily out of any real understanding of the
+            sufficiency of the sacrifice being made. In the act of placing the blood on the
+            doorposts, the Israelites communicated that they were set apart because they had chosen
+            to willingly subjugate themselves to a sacrifice that was higher than themselves. The
+            fundamental Egyptian principle at the time was predicated on a hierarchy that placed
+            Pharaoh as the ultimate authority, whereas the Israelites made a decision to willingly
+            come under the authority of the Lord.
+          </p>
+          <p>
+            The blood on the doorposts was step one in the final process of the Israelites making
+            their way out of Egypt, step two was deciding to ask for the Egyptian gold as they were
+            leaving Egypt. It's easy to write off the significance of step two, as the consequences
+            of getting step one wrong seem to significantly overshadow the implications behind
+            simply leaving Egypt "empty-handed". There's a decisive finality in the last plague
+            that's embodied in the literal death of the firstborn across all of Egypt. If you get
+            step one wrong, you die, but if you get step two wrong then you soon find yourself "in
+            the desert" without the materials necessary to participate in covenantal union with the
+            Lord. In order to "move into the desert" and be successful you have to first receive the
+            gold, and you receive the gold by having the humility to ask for it on your way out of
+            the tyranny. The key is being humble enough to ask for the gold on the way out. You
+            don't want to be in a position where the Lord asks you to build an ark, but you don't
+            have the gold to do so.
+          </p>
+        </Section>
+
+        <Section id="building-a-dwelling-place" title="Building a Dwelling Place">
+          <p>
+            Today, the Lord's presence is not contained in arks or tabernacles, but rather "dwelling
+            in our hearts through faith" (Ephesians 3:16). Though the "building material" of that
+            which hosts the Lord's presence has changed from gold and acacia wood to flesh and bone,
+            the physical nature of His habitation remains the same. If there is anything sacred,
+            it's the place where the Lord resides. This reality was so tangible in the old testament
+            that you would immediately be struck down for so much as laying a hand on the ark of the
+            covenant. In the same way that tampering with the arc of the covenant came with
+            consequences, so too does manipulating the modern rendition of the Lord's encampment,
+            the human body (1 Corinthians 6:19). If that holds true, then it's worth considering
+            what might be considered a "sin against the body." Money is the essence of physical life
+            in that it is fundamentally human time and energy. With that said, the manipulation or
+            dilution of the money is akin to tampering with the ark, there is no more egregious sin.
+          </p>
+          <p>
+            Similar to how the gold served as the material used to build the ark of the covenant,
+            money serves as that same "physical material" today with which we have the opportunity
+            to build a modern dwelling place for the Lord. Unbeknownst to the Israelites, they
+            received the gold as something of a reconciliation for all the time and energy lost
+            while enslaved in Egypt. They cast both an ark and an idol out of that same gold, and
+            that's precisely what made the magnitude of the subsequent glory and sin respectively so
+            great; they created those things out of their very being. They gave themselves over to
+            each of those things in the most intimate way possible by using the gold that was
+            fundamentally the personification of their very lives. Moses understood this idea.
+            That's why he had the Israelites literally drink (internalize) the gold of the golden
+            calf:
+          </p>
+          <Blockquote>
+            When Moses approached the camp and saw the calf and the dancing, his anger burned and he
+            threw the tablets out of his hands, breaking them to pieces at the foot of the mountain.
+            And he took the calf the people had made and burned it in the fire; then he ground it to
+            powder, scattered it on the water and made the Israelites drink it. Exodus 32:19–20
+          </Blockquote>
+          <p>
+            Moses made them drink the gold because he wanted to drive the point home: the gold was
+            literally the personification of their very life. The forced drinking of the gold was
+            actually the mercy of Moses offering the Israelites a second chance. As the Lord's
+            prophet, "in wrath (he) remembers mercy". Drinking the gold served as a physical
+            reminder that the gold was a derivative (in the financial sense of the word) of their
+            very life, and thus should be considered as sacred as life itself. They internalized the
+            gold with the implication that it would be "digested" and then come out imbued with life
+            anew as though it were being derived from their bodies for the first time, a second
+            chance. The labor of digestion producing the second rendering is illustrative of the
+            initial rendering of the gold that came through work/labor (the expenditure of time and
+            energy). There is no clearer symbolic representation of money as your life than this.
+          </p>
+          <p>
+            Receiving money on the way out of the Modern Exodus tyranny is the receiving back of
+            lifeblood (energy) required to "build an ark" on the other side of the "Red Sea". Among
+            all the value in Egypt, gold was the only seemingly Egyptian relic that made it out of
+            Egypt, but that isn't exactly correct. The only thing that made it out of Egypt was the
+            Israelites themselves (past, present, and future). It's the combination of their past
+            (past life, the gold) with their present life (the Exodus) that allows them to realize
+            their future life (the Promised Land). The "Egyptian gold" received in Exodus 12 isn't
+            Egyptian at all. When asked for, in a spirit of humility and received in faith, the gold
+            becomes the realization of life lost in the hands of the Israelites. By asking for it on
+            the way out, there's a sense in which an oppressed person receives their life back in a
+            spirit of both humility and dignity.
+          </p>
+          <FigureImage
+            src="/paper/img-005.png"
+            alt="Cumulative Inflation 1913 - 2022"
+            caption="Cumulative Inflation 1913 – 2022"
+          />
+        </Section>
+
         <Section id="bitcoin" title="Bitcoin">
           <p>
             Similar to how the Church served as a major patron and custodian of knowledge prior to
@@ -637,4 +866,31 @@ function Section({
 
 function Blockquote({ children }: { children: React.ReactNode }) {
   return <blockquote>{children}</blockquote>;
+}
+
+function FigureImage({
+  src,
+  alt,
+  caption,
+}: {
+  src: string;
+  alt: string;
+  caption?: string;
+}) {
+  return (
+    <figure className="my-10">
+      <Image
+        src={src}
+        alt={alt}
+        width={1200}
+        height={700}
+        className="w-full h-auto border border-stone-200"
+      />
+      {caption && (
+        <figcaption className="text-xs text-stone-500 mt-3 text-center italic">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
 }
