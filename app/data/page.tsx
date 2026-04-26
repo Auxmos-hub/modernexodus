@@ -85,6 +85,21 @@ const chapwoodComparison = [
   },
 ] as const;
 
+const readingNotes = [
+  {
+    label: "How to use this page",
+    text: "Start with the live series, then move into the reference sections below if you want the slower historical framing and source trail.",
+  },
+  {
+    label: "What these data points do",
+    text: "They do not prove the whole thesis by themselves. They establish the pressure, extraction, and distortion the paper is interpreting.",
+  },
+  {
+    label: "Limits to keep in view",
+    text: "FRED reflects official releases, not a bespoke cost-of-living model. The live layer is a credible front door, not the last word on household pain.",
+  },
+] as const;
+
 const fallbackLiveCards: LiveDataCardData[] = [
   {
     title: "M2 Money Supply",
@@ -313,106 +328,132 @@ export default async function DataPage() {
   const liveCards = await getLiveCards();
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-16">
-      <div className="border-b border-stone-200 pb-12 mb-12">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.7fr)_320px] lg:items-start">
+    <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <section className="border-b border-stone-200 pb-14 md:pb-16">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.75fr)_minmax(260px,0.85fr)] lg:items-start">
           <div>
-            <p className="text-xs font-medium text-stone-400 uppercase tracking-widest mb-4">
-              The Data
+            <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-stone-500">
+              Data repository
             </p>
-            <h1 className="font-display text-4xl font-semibold text-stone-900 mb-4 md:text-5xl">
-              What the numbers say now
+            <h1 className="max-w-4xl font-display text-4xl font-semibold leading-tight text-stone-900 md:text-5xl">
+              Current conditions, comparison material, and longer reference points.
             </h1>
-            <p className="text-stone-500 text-lg max-w-3xl leading-relaxed">
-              Start with the live layer. These cards pull current public FRED series into a restrained,
-              reviewable front door before the longer reference notes below.
+            <p className="mt-6 max-w-3xl text-xl leading-9 text-stone-700">
+              Start with the live layer. The aim is a readable first pass on monetary expansion,
+              household pressure, and purchasing-power loss before the slower archival notes below.
             </p>
-            <p className="text-sm text-stone-400 leading-relaxed max-w-2xl mt-5">
-              This page is meant to be reviewed first. If the evidence seems coherent, continue to{" "}
-              <Link href="/paper" className="text-stone-600 hover:text-stone-900">
+            <p className="mt-5 max-w-2xl text-base leading-8 text-stone-600">
+              This page is meant to be reviewed first. If the evidence feels coherent enough to keep
+              testing, continue to{" "}
+              <Link
+                href="/paper"
+                className="text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-900"
+              >
                 the paper
-              </Link>{" "}
-              for the full theological argument.
+              </Link>
+              .
             </p>
           </div>
 
-          <aside className="border border-stone-200 bg-white p-6">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-400">
-              Read this layer first
-            </p>
-            <ol className="mt-5 space-y-4 text-sm leading-relaxed text-stone-600">
-              <li className="flex gap-3">
-                <span className="font-mono text-xs text-stone-300">01</span>
-                <span>Scan the current conditions cards for the present pressure points.</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="font-mono text-xs text-stone-300">02</span>
-                <span>Open the FRED source links and inspect the series directly.</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="font-mono text-xs text-stone-300">03</span>
-                <span>Use the longer writeups below to connect the live layer to the thesis.</span>
-              </li>
-            </ol>
-            <p className="mt-6 border-t border-stone-100 pt-5 text-sm leading-relaxed text-stone-500">
-              Refresh cadence follows the underlying series. The page itself is revalidated periodically,
-              but monthly and weekly FRED releases still arrive on their own schedule.
-            </p>
+          <aside className="lg:border-l lg:border-stone-200 lg:pl-8">
+            <div className="border-t border-stone-300 pt-5">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-500">
+                Reading order
+              </p>
+              <ol className="mt-5 space-y-5 text-sm leading-7 text-stone-600">
+                <li className="flex gap-3">
+                  <span className="font-mono text-xs text-stone-400">01</span>
+                  <span>Scan the live series for the present pressure points.</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-mono text-xs text-stone-400">02</span>
+                  <span>Open the FRED links and inspect the underlying series directly.</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-mono text-xs text-stone-400">03</span>
+                  <span>Use the deeper notes to connect the live layer to the larger thesis.</span>
+                </li>
+              </ol>
+            </div>
+            <div className="mt-8 bg-stone-100/80 px-5 py-5">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-500">
+                Refresh cadence
+              </p>
+              <p className="mt-3 text-sm leading-7 text-stone-600">
+                The page revalidates periodically, but the weekly and monthly series still move on the
+                release schedule of the underlying public data.
+              </p>
+            </div>
           </aside>
         </div>
-      </div>
+      </section>
 
-      <section className="mb-16">
-        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-400 mb-3">
+      <section className="border-b border-stone-200 py-16 md:py-20">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.45fr)_minmax(240px,0.8fr)] lg:items-end">
+          <div className="max-w-3xl">
+            <p className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-stone-500">
               Current conditions
             </p>
             <h2 className="font-display text-3xl font-semibold text-stone-900">
-              A live first-pass on monetary expansion and household pressure
+              A live first pass on monetary expansion and household pressure.
             </h2>
+            <p className="mt-4 text-base leading-8 text-stone-600">
+              Public FRED series only. No heavy charting, no dashboard theatrics — just enough live
+              signal to orient a careful reader quickly.
+            </p>
           </div>
-          <p className="max-w-xl text-sm leading-relaxed text-stone-500">
-            Public FRED series only. No API keys, no heavy charting, just enough signal to let visitors
-            orient themselves quickly.
-          </p>
+
+          <div className="border-t border-stone-200 pt-5">
+            <dl className="space-y-4 text-sm leading-7 text-stone-600">
+              <div>
+                <dt className="text-xs font-medium uppercase tracking-[0.18em] text-stone-400">
+                  Live layer
+                </dt>
+                <dd>Money stock, Fed assets, CPI, shelter, energy, and purchasing power.</dd>
+              </div>
+              <div>
+                <dt className="text-xs font-medium uppercase tracking-[0.18em] text-stone-400">
+                  Source base
+                </dt>
+                <dd>Public FRED releases with direct source links on every card.</dd>
+              </div>
+            </dl>
+          </div>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {liveCards.map((card) => (
             <LiveDataCard key={card.title} {...card} />
           ))}
         </div>
       </section>
 
-      <section className="mb-16 border-y border-stone-200 py-12">
-        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-400 mb-3">
-              Comparison layer
-            </p>
-            <h2 className="font-display text-3xl font-semibold text-stone-900">
-              Official CPI and Chapwood are not the same lens
-            </h2>
-          </div>
-          <p className="max-w-2xl text-sm leading-relaxed text-stone-500">
-            The point is not to pretend these measures are interchangeable. It is to let visitors compare
-            the official inflation story with an alternative cost-of-living frame and see where the gap in
-            lived experience might be opening.
+      <section className="border-b border-stone-200 py-16 md:py-20">
+        <div className="max-w-3xl">
+          <p className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-stone-500">
+            Comparison layer
+          </p>
+          <h2 className="font-display text-3xl font-semibold text-stone-900">
+            Official CPI and Chapwood are related, but not interchangeable.
+          </h2>
+          <p className="mt-4 text-base leading-8 text-stone-600">
+            The point is not to collapse the measures into one story. It is to show how an official
+            national series and a more lived cost frame can describe different parts of the same
+            pressure field.
           </p>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_320px]">
+        <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(220px,0.8fr)] lg:gap-12">
           {chapwoodComparison.map((item) => (
-            <div key={item.title} className="border border-stone-200 bg-white p-6">
+            <article key={item.title} className="border-t border-stone-200 pt-5">
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-400">
                 {item.sourceLabel}
               </p>
               <h3 className="mt-3 font-display text-2xl font-semibold text-stone-900">{item.title}</h3>
-              <ul className="mt-4 space-y-3 text-sm leading-relaxed text-stone-600">
+              <ul className="mt-5 space-y-3 text-sm leading-7 text-stone-600">
                 {item.points.map((point) => (
                   <li key={point} className="flex gap-3">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-stone-300 shrink-0" />
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-stone-300" />
                     <span>{point}</span>
                   </li>
                 ))}
@@ -421,120 +462,135 @@ export default async function DataPage() {
                 href={item.sourceUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-6 inline-block text-sm font-medium text-stone-900 border-b border-stone-300 pb-0.5 hover:border-stone-900 transition-colors"
+                className="mt-6 inline-block text-sm font-medium text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-900"
               >
                 Open source →
               </a>
-            </div>
+            </article>
           ))}
 
-          <aside className="border border-stone-200 bg-white p-6">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-400">
-              How to use the comparison
+          <aside className="bg-stone-100/80 px-5 py-6">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-500">
+              How to read the gap
             </p>
-            <ol className="mt-5 space-y-4 text-sm leading-relaxed text-stone-600">
+            <ol className="mt-5 space-y-4 text-sm leading-7 text-stone-600">
               <li className="flex gap-3">
-                <span className="font-mono text-xs text-stone-300">01</span>
+                <span className="font-mono text-xs text-stone-400">01</span>
                 <span>Use FRED first for stable, inspectable official series.</span>
               </li>
               <li className="flex gap-3">
-                <span className="font-mono text-xs text-stone-300">02</span>
-                <span>Use Chapwood as a second lens when you want a more lived, city-sensitive cost frame.</span>
+                <span className="font-mono text-xs text-stone-400">02</span>
+                <span>Use Chapwood as a second lens when you want a more lived cost frame.</span>
               </li>
               <li className="flex gap-3">
-                <span className="font-mono text-xs text-stone-300">03</span>
-                <span>The tension between the two is part of the point, not a bug to hide.</span>
+                <span className="font-mono text-xs text-stone-400">03</span>
+                <span>The tension between the two is part of the evidence, not a bug to hide.</span>
               </li>
             </ol>
-            <p className="mt-6 border-t border-stone-100 pt-5 text-sm leading-relaxed text-stone-500">
-              For now this page uses FRED as the live layer and Chapwood as a comparison lens. If we want,
-              the next pass can add a fuller city-by-city Chapwood module.
-            </p>
           </aside>
         </div>
       </section>
 
-      <div className="mb-12 grid gap-6 md:grid-cols-3">
-        <div className="border border-stone-200 bg-white p-6">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-400">How to use this page</p>
-          <p className="mt-3 text-sm leading-relaxed text-stone-500">
-            Start with the live cards, then move into the archived reference points below if you want
-            the longer argument and source trail.
-          </p>
+      <section className="border-b border-stone-200 py-14 md:py-16">
+        <div className="grid gap-8 md:grid-cols-3 md:gap-10">
+          {readingNotes.map((note) => (
+            <article key={note.label} className="border-t border-stone-200 pt-4">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-400">{note.label}</p>
+              <p className="mt-3 text-sm leading-7 text-stone-600">{note.text}</p>
+            </article>
+          ))}
         </div>
-        <div className="border border-stone-200 bg-white p-6">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-400">What these data points do</p>
-          <p className="mt-3 text-sm leading-relaxed text-stone-500">
-            They do not prove every part of the thesis on their own. They establish the economic
-            pressure, extraction, and distortion the paper is interpreting.
-          </p>
-        </div>
-        <div className="border border-stone-200 bg-white p-6">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-400">Limits to keep in view</p>
-          <p className="mt-3 text-sm leading-relaxed text-stone-500">
-            FRED reflects official releases, not a bespoke cost-of-living model. The cards are a
-            credible front door, not the last word on real household pain.
-          </p>
-        </div>
-      </div>
-
-      <section className="mb-8">
-        <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-400 mb-3">
-          Deeper reference points
-        </p>
-        <h2 className="font-display text-3xl font-semibold text-stone-900">
-          The longer argument stays below the fold
-        </h2>
-        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-stone-500">
-          These are the existing anchor claims that give the thesis historical depth. The live layer above
-          is meant to make the page usable at a glance; these notes are where the longer framing remains.
-        </p>
       </section>
 
-      <div className="space-y-12">
-        {datasets.map((d) => (
-          <div key={d.title} className="border border-stone-200 bg-white p-8">
-            <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <h2 className="font-display text-2xl font-semibold text-stone-900 mb-1">
-                  {d.title}
-                </h2>
-                <p className="text-xs text-stone-400 uppercase tracking-wider">{d.period}</p>
-              </div>
-              <span className="font-display text-4xl font-semibold text-stone-900 sm:ml-8">
-                {d.value}
-              </span>
-            </div>
-            <p className="text-stone-600 leading-relaxed mb-4">{d.detail}</p>
-            <div className="border-t border-stone-100 pt-4 mt-4">
-              <p className="text-sm text-stone-500 italic leading-relaxed mb-3">
-                <span className="font-medium not-italic text-stone-700">Implication: </span>
-                {d.implication}
-              </p>
-              <p className="text-xs text-stone-400">
-                Source:{" "}
-                <a
-                  href={d.sourceUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="underline decoration-stone-300 underline-offset-2 hover:text-stone-700"
-                >
-                  {d.source}
-                </a>
-              </p>
-            </div>
+      <section className="py-16 md:py-20">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(220px,0.8fr)] lg:items-start">
+          <div className="max-w-3xl">
+            <p className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-stone-500">
+              Deeper reference points
+            </p>
+            <h2 className="font-display text-3xl font-semibold text-stone-900">
+              The archival layer stays below the fold.
+            </h2>
+            <p className="mt-4 text-base leading-8 text-stone-600">
+              These longer anchor claims give the thesis historical depth. The presentation is quieter on
+              purpose: less dashboard, more report.
+            </p>
           </div>
-        ))}
-      </div>
 
-      <div className="mt-16 border-t border-stone-200 pt-12">
-        <p className="text-sm text-stone-400 leading-relaxed max-w-3xl">
-          <span className="font-medium text-stone-600">A note on sources.</span>{" "}
-          The live section uses public FRED CSV endpoints, so freshness is limited by the release cadence of
-          the underlying weekly and monthly series. The deeper notes still rely on broader historical and
-          interpretive sources. Even by the official metrics, the scale of purchasing-power destruction is hard to dismiss.
-        </p>
-      </div>
+          <aside className="border-t border-stone-200 pt-5">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-400">
+              Archive use
+            </p>
+            <p className="mt-3 text-sm leading-7 text-stone-600">
+              Review these when you want the slower context behind the live cards: long-run dilution,
+              purchasing-power loss, wage divergence, and cumulative inflation.
+            </p>
+          </aside>
+        </div>
+
+        <div className="mt-12 space-y-12">
+          {datasets.map((d, index) => (
+            <article key={d.title} className="border-t border-stone-200 pt-8 md:pt-10">
+              <div className="grid gap-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(220px,0.75fr)] lg:gap-12">
+                <div>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium uppercase tracking-[0.18em] text-stone-400">
+                    <span>{`Reference ${String(index + 1).padStart(2, "0")}`}</span>
+                    <span className="hidden h-1 w-1 rounded-full bg-stone-300 sm:inline-block" />
+                    <span>{d.period}</span>
+                  </div>
+                  <h3 className="mt-3 font-display text-2xl font-semibold text-stone-900 md:text-3xl">
+                    {d.title}
+                  </h3>
+                  <p className="mt-5 text-base leading-8 text-stone-700">{d.detail}</p>
+                  <p className="mt-6 border-l-2 border-stone-200 pl-5 text-sm italic leading-7 text-stone-600">
+                    <span className="font-medium not-italic text-stone-700">Implication.</span>{" "}
+                    {d.implication}
+                  </p>
+                </div>
+
+                <div className="lg:pt-1">
+                  <p className="font-display text-4xl font-semibold text-stone-900 md:text-[2.75rem]">
+                    {d.value}
+                  </p>
+                  <dl className="mt-6 space-y-4 border-t border-stone-200 pt-5 text-sm leading-7">
+                    <div>
+                      <dt className="text-xs font-medium uppercase tracking-[0.18em] text-stone-400">
+                        Period
+                      </dt>
+                      <dd className="mt-1 text-stone-700">{d.period}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-xs font-medium uppercase tracking-[0.18em] text-stone-400">
+                        Source
+                      </dt>
+                      <dd className="mt-1 text-stone-700">
+                        <a
+                          href={d.sourceUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-900"
+                        >
+                          {d.source}
+                        </a>
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-16 border-t border-stone-200 pt-8">
+          <p className="max-w-3xl text-sm leading-7 text-stone-600">
+            <span className="font-medium text-stone-700">A note on sources.</span>{" "}
+            The live section uses public FRED endpoints, so freshness is limited by the release cadence of
+            the underlying weekly and monthly series. The deeper notes still rely on broader historical
+            and interpretive sources. Even by the official metrics, the scale of purchasing-power
+            destruction is hard to dismiss.
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
