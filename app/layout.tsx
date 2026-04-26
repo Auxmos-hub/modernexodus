@@ -61,30 +61,20 @@ export default function RootLayout({
                 visitors review the Modern Exodus thesis for themselves.
               </p>
             </div>
-            <div className="grid gap-8 sm:grid-cols-2">
-              <div>
-                <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-400">
-                  Explore
-                </p>
-                <div className="mt-4 space-y-2 text-sm text-stone-500">
-                  <Link href="/data" className="block hover:text-stone-900 transition-colors">
-                    Data
-                  </Link>
-                  <Link href="/paper" className="block hover:text-stone-900 transition-colors">
-                    The Paper
-                  </Link>
-                  <Link href="/articles" className="block hover:text-stone-900 transition-colors">
-                    Articles
-                  </Link>
-                </div>
-              </div>
-              <div>
-                <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-400">
-                  Note
-                </p>
-                <p className="mt-4 text-sm leading-relaxed text-stone-500">
-                  For the church in its wilderness season. Paper by Austin Morrow.
-                </p>
+            <div>
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-400">
+                Explore
+              </p>
+              <div className="mt-4 space-y-2 text-sm text-stone-500">
+                <Link href="/data" className="block hover:text-stone-900 transition-colors">
+                  Data
+                </Link>
+                <Link href="/paper" className="block hover:text-stone-900 transition-colors">
+                  The Paper
+                </Link>
+                <Link href="/articles" className="block hover:text-stone-900 transition-colors">
+                  Articles
+                </Link>
               </div>
             </div>
           </div>
