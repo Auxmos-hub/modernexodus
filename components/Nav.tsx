@@ -7,21 +7,26 @@ export default function Nav() {
   const pathname = usePathname();
 
   const links = [
+    { href: "/data", label: "Data" },
     { href: "/paper", label: "The Paper" },
     { href: "/articles", label: "Articles" },
-    { href: "/data", label: "Data" },
   ];
 
   return (
-    <nav className="border-b border-stone-200 bg-stone-50/80 backdrop-blur-sm sticky top-0 z-10">
-      <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+    <nav className="sticky top-0 z-10 border-b border-stone-200 bg-stone-50/90 backdrop-blur-sm">
+      <div className="max-w-4xl mx-auto px-6 py-4 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <Link
           href="/"
-          className="font-display text-lg font-semibold tracking-tight text-stone-900"
+          className="block"
         >
-          Modern Exodus
+          <span className="block font-display text-lg font-semibold tracking-tight text-stone-900">
+            Modern Exodus
+          </span>
+          <span className="mt-1 block text-xs uppercase tracking-[0.22em] text-stone-400">
+            A thesis for the church
+          </span>
         </Link>
-        <div className="flex items-center gap-8 text-sm">
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm sm:justify-end">
           {links.map(({ href, label }) => {
             const active = pathname === href || pathname.startsWith(href + "/");
             return (

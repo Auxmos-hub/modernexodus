@@ -1,5 +1,7 @@
+import Link from "next/link";
+
 export const metadata = {
-  title: "Articles — Modern Exodus",
+  title: "Articles",
   description: "Breakdowns, analysis, and theological reflection on the Modern Exodus thesis.",
 };
 
@@ -61,21 +63,24 @@ export default function ArticlesPage() {
         <p className="text-stone-500 text-lg max-w-xl leading-relaxed">
           Deeper dives into specific aspects of the thesis — economic, theological, and formational.
         </p>
+        <p className="text-sm text-stone-400 leading-relaxed max-w-2xl mt-5">
+          New here? Read <Link href="/paper" className="text-stone-600 hover:text-stone-900">the paper</Link> first, then return here for shorter companion pieces.
+        </p>
       </div>
 
       <div className="space-y-0">
-        {articles.map((article, i) => (
+        {articles.map((article) => (
           <div
             key={article.title}
-            className="border-t border-stone-200 py-10 grid grid-cols-5 gap-8 first:border-t-0"
+            className="border-t border-stone-200 py-10 grid grid-cols-1 gap-4 md:grid-cols-5 md:gap-8 first:border-t-0"
           >
-            <div className="col-span-1 pt-1">
+            <div className="md:col-span-1 pt-1">
               <span className="text-xs font-medium text-stone-400 uppercase tracking-wider block mb-2">
                 {article.category}
               </span>
               <span className="text-xs text-stone-300">{article.date}</span>
             </div>
-            <div className="col-span-4">
+            <div className="md:col-span-4">
               <h2 className="font-display text-xl font-semibold text-stone-900 mb-3 leading-snug">
                 {article.title}
               </h2>

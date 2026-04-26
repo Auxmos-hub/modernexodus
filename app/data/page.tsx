@@ -1,5 +1,7 @@
+import Link from "next/link";
+
 export const metadata = {
-  title: "Data — Modern Exodus",
+  title: "Data",
   description: "The economic data behind the Modern Exodus thesis.",
 };
 
@@ -56,19 +58,22 @@ export default function DataPage() {
           The Modern Exodus thesis is not abstract. It has a paper trail. These are the data points
           that ground the argument in empirical reality.
         </p>
+        <p className="text-sm text-stone-400 leading-relaxed max-w-2xl mt-5">
+          If you have not read <Link href="/paper" className="text-stone-600 hover:text-stone-900">the paper</Link> yet, start there first. This page is meant to support the argument, not replace it.
+        </p>
       </div>
 
       <div className="space-y-12">
         {datasets.map((d) => (
           <div key={d.title} className="border border-stone-200 bg-white p-8">
-            <div className="flex items-start justify-between mb-6">
+            <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <h2 className="font-display text-2xl font-semibold text-stone-900 mb-1">
                   {d.title}
                 </h2>
                 <p className="text-xs text-stone-400 uppercase tracking-wider">{d.period}</p>
               </div>
-              <span className="font-display text-4xl font-semibold text-stone-900 ml-8">
+              <span className="font-display text-4xl font-semibold text-stone-900 sm:ml-8">
                 {d.value}
               </span>
             </div>
@@ -78,8 +83,16 @@ export default function DataPage() {
                 <span className="font-medium not-italic text-stone-700">Implication: </span>
                 {d.implication}
               </p>
-              <p className="text-xs text-stone-300">
-                Source: {d.source}
+              <p className="text-xs text-stone-400">
+                Source:{" "}
+                <a
+                  href={d.sourceUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline decoration-stone-300 underline-offset-2 hover:text-stone-700"
+                >
+                  {d.source}
+                </a>
               </p>
             </div>
           </div>
