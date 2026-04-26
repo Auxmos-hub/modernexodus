@@ -145,19 +145,202 @@ export default function PaperPage() {
   );
 }
 
+const SCRIPTURE_BLOCKS = [
+  { startsWith: "During that long period, the king of Egypt died.", reference: "Exodus 2:23-25" },
+  {
+    startsWith: "The LORD said, “I have indeed seen the misery of my people in Egypt.",
+    reference: "Exodus 3:7",
+  },
+  {
+    startsWith: "And now the cry of the Israelites has reached me, and I have seen the way the",
+    reference: "Exodus 3:9",
+  },
+  {
+    startsWith: "“Go, assemble the elders of Israel and say to them, ‘The LORD, the God of your",
+    reference: "Exodus 3:16-17",
+  },
+  {
+    startsWith: "Moses and Aaron brought together all the elders of the Israelites, and Aaron told",
+    reference: "Exodus 4:29-31",
+  },
+  {
+    startsWith: "So now, go. I am sending you to Pharaoh to bring my people the Israelites out of",
+    reference: "Exodus 3:10",
+  },
+  {
+    startsWith: "‘I am the LORD, and I will bring you out from under the yoke of the Egyptians.",
+    reference: "Exodus 6:6-8",
+  },
+  {
+    startsWith: "Moses reported this to the Israelites, but they did not listen to him because of",
+    reference: "Exodus 6:9",
+  },
+  {
+    startsWith: "Then the LORD said to Moses, “Go, tell Pharaoh king of Egypt to let the Israelites",
+    reference: "Exodus 6:10-11",
+  },
+  {
+    startsWith: "The LORD said to Moses, “When you return to Egypt, see that you perform before",
+    reference: "Exodus 4:21-23",
+  },
+  {
+    startsWith: "For by now I could have stretched out my hand and struck you and your people",
+    reference: "Exodus 9:15-17",
+  },
+  {
+    startsWith: "I will harden the hearts of the Egyptians so that they will go in after them.",
+    reference: "Exodus 14:17-18",
+  },
+  {
+    startsWith: "made ready and took his army with him. He took six hundred of the best chariots,",
+    reference: "Exodus 14:5-9",
+  },
+  {
+    startsWith: "There is a time for everything, and a season for every activity under the heavens",
+    reference: "Ecclesiastes 3:1, 8",
+  },
+  {
+    startsWith: "“For the love of money is the root of all kinds of evil.",
+    reference: "1 Timothy 6:10",
+  },
+  {
+    startsWith: "But the king of Egypt said, “Moses and Aaron, why are you taking the people",
+    reference: "Exodus 5:4-5",
+  },
+  {
+    startsWith: "Then the slave drivers and the overseers went out and said to the people, “This",
+    reference: "Exodus 5:10-14",
+  },
+  {
+    startsWith: "That same day Pharaoh gave this order to the slave drivers and overseers in",
+    reference: "Exodus 5:6-9 (author’s emphasis)",
+  },
+  {
+    startsWith: "And I will make the Egyptians favorably disposed toward this people, so that when",
+    reference: "Exodus 3:21-22",
+  },
+  {
+    startsWith: "When Moses approached the camp and saw the calf and the dancing, his anger",
+    reference: "Exodus 32:19-20",
+  },
+  {
+    startsWith: "“Don’t you know that you yourselves are God’s temple and that God’s Spirit dwells",
+    reference: "1 Corinthians 3:16-17",
+  },
+] as const;
+
 function TextBlockView({ text }: { text: string }) {
-  const paragraphs = text
-    .split(/\n\s*\n/g)
-    .map((paragraph) => paragraph.split("\n").map((line) => line.trim()).join(" ").trim())
-    .filter(Boolean);
+  const segments = parseTextSegments(text);
 
   return (
     <>
-      {paragraphs.map((paragraph, index) => (
-        <p key={`${paragraph.slice(0, 24)}-${index}`}>{paragraph}</p>
-      ))}
+      {segments.map((segment, index) => {
+        if (segment.type === "scripture") {
+          return (
+            <div key={`${segment.reference}-${index}`} className="scripture-block">
+              <div className="scripture-tab">{segment.reference}</div>
+              <p className="scripture-quote">{segment.quote}</p>
+            </div>
+          );
+        }
+
+        return <p key={`${segment.text.slice(0, 24)}-${index}`}>{segment.text}</p>;
+      })}
     </>
   );
+}
+
+function parseTextSegments(text: string) {
+  const lines = text.split("\n");
+  const segments: Array<
+    | { type: "paragraph"; text: string }
+    | { type: "scripture"; quote: string; reference: string }
+  > = [];
+  const proseLines: string[] = [];
+
+  const flushProse = () => {
+    if (!proseLines.length) {
+      return;
+    }
+
+    const paragraph = proseLines.join(" ").replace(/\s+/g, " ").trim();
+    proseLines.length = 0;
+
+    if (paragraph) {
+      segments.push({ type: "paragraph", text: paragraph });
+    }
+  };
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index].trim();
+
+    if (!line) {
+      flushProse();
+      continue;
+    }
+
+    const scripture = collectScriptureBlock(lines, index);
+
+    if (scripture) {
+      flushProse();
+      segments.push({ type: "scripture", quote: scripture.quote, reference: scripture.reference });
+      index = scripture.endIndex;
+      continue;
+    }
+
+    proseLines.push(line);
+  }
+
+  flushProse();
+
+  return segments;
+}
+
+function collectScriptureBlock(lines: string[], startIndex: number) {
+  const startingLine = lines[startIndex].trim();
+  const block = SCRIPTURE_BLOCKS.find(({ startsWith }) => startingLine.startsWith(startsWith));
+
+  if (!block) {
+    return null;
+  }
+
+  const quoteLines: string[] = [];
+
+  for (let index = startIndex; index < lines.length; index += 1) {
+    const line = lines[index].trim();
+
+    if (!line) {
+      return null;
+    }
+
+    quoteLines.push(line);
+
+    if (lineEndsWithReference(line, block.reference)) {
+      const quote = quoteLines
+        .join(" ")
+        .replace(new RegExp(`\\(?${escapeRegExp(block.reference)}\\)?\\s*$`), "")
+        .replace(/[\s(]+$/, "")
+        .replace(/[)\s]+$/, "")
+        .replace(/\s+/g, " ")
+        .trim();
+
+      if (quote.length < 24) {
+        return null;
+      }
+
+      return { quote, reference: block.reference, endIndex: index };
+    }
+  }
+
+  return null;
+}
+
+function lineEndsWithReference(line: string, reference: string) {
+  return new RegExp(`\\(?${escapeRegExp(reference)}\\)?\\s*$`).test(line.trim());
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function getSections(): SectionData[] {
