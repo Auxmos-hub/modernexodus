@@ -106,8 +106,7 @@ export default function PaperPage() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-16">
       <div className="border-b border-stone-200 pb-12 mb-12">
-        <h1 className="font-display text-5xl font-semibold text-stone-900 mb-4">A Modern Exodus</h1>
-        <p className="text-stone-500 text-lg">By Austin Morrow</p>
+        <h1 className="font-display text-5xl font-semibold text-stone-900">A Modern Exodus</h1>
       </div>
 
       <div className="prose-custom">
