@@ -63,7 +63,7 @@ export default function Home() {
             </h1>
             <p className="mt-8 max-w-2xl text-xl leading-relaxed text-stone-600">
               The Exodus was not only an event. It was a pattern — oppression,
-              cry, deliverance, wilderness, covenant. The argument here is that
+              cry, deliverance, covenant, wilderness, promised land. The argument here is that
               we are living inside that pattern again, and that the church needs
               language clear enough to see the moment for what it is.
             </p>
@@ -247,7 +247,7 @@ export default function Home() {
                 The Pattern
               </p>
               <ol className="space-y-2 text-sm text-stone-600">
-                {["Oppression", "Cry", "Deliverance", "Wilderness", "Covenant"].map(
+                {["Oppression", "Cry", "Deliverance", "Covenant", "Wilderness", "Promised Land"].map(
                   (step, i) => (
                     <li key={step} className="flex items-center gap-3">
                       <span className="text-stone-300 font-mono text-xs">
