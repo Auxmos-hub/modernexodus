@@ -1,5 +1,4 @@
 import Link from "next/link";
-import DataWidget from "@/components/DataWidget";
 
 const pathways = [
   {
@@ -22,6 +21,33 @@ const pathways = [
       "Track the shorter pieces that extend, test, and apply the argument over time.",
     href: "/articles",
     cta: "Browse articles →",
+  },
+];
+
+const dataHighlights = [
+  {
+    label: "M2 Money Supply",
+    sublabel: "Since Jan 2020",
+    value: "+40%",
+    description:
+      "The Fed expanded the money supply by 40% in two years — the fastest in modern history. Prices followed.",
+    source: "Federal Reserve",
+  },
+  {
+    label: "Purchasing Power",
+    sublabel: "USD, 2000–2024",
+    value: "−30%",
+    description:
+      "A dollar today buys what 70 cents bought in 2000. The slow erosion of ordinary savings.",
+    source: "BLS CPI-U",
+  },
+  {
+    label: "CPI (All Items)",
+    sublabel: "2020–2024 cumulative",
+    value: "+22%",
+    description:
+      "Official inflation since the pandemic. Shelter, food, and energy have run significantly higher.",
+    source: "Bureau of Labor Statistics",
   },
 ];
 
@@ -51,28 +77,29 @@ const articlePreviews = [
 
 export default function Home() {
   return (
-    <div className="max-w-4xl mx-auto px-6">
-      <section className="border-b border-stone-200 py-16 md:py-20">
-        <div className="grid gap-12 md:grid-cols-[minmax(0,1.8fr)_minmax(280px,1fr)] md:items-start">
+    <div className="mx-auto max-w-4xl px-6">
+      <section className="border-b border-stone-200 py-20 md:py-24">
+        <div className="grid gap-12 md:grid-cols-[minmax(0,1.75fr)_minmax(260px,0.95fr)] md:items-start">
           <div>
-            <p className="mb-6 text-sm font-medium uppercase tracking-widest text-stone-400">
+            <p className="mb-6 text-sm font-medium uppercase tracking-[0.22em] text-stone-500">
               Data, argument, and supporting material
             </p>
-            <h1 className="max-w-3xl font-display text-5xl font-semibold leading-tight text-stone-900 md:text-6xl">
+            <h1 className="max-w-3xl font-display text-5xl font-semibold leading-[1.06] text-stone-900 md:text-[4.2rem]">
               The people of God are being called out again.
             </h1>
-            <p className="mt-8 max-w-2xl text-xl leading-relaxed text-stone-600">
+            <p className="mt-8 max-w-2xl text-xl leading-9 text-stone-700">
               The Exodus was not only an event. It was a pattern — oppression,
-              cry, deliverance, covenant, wilderness, promised land. The argument here is that
-              we are living inside that pattern again, and that the church needs
-              language clear enough to see the moment for what it is.
+              cry, deliverance, covenant, wilderness, promised land. The
+              argument here is that we are living inside that pattern again,
+              and that the church needs language clear enough to see the moment
+              for what it is.
             </p>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-stone-500">
+            <p className="mt-5 max-w-2xl text-base leading-8 text-stone-600">
               This site is meant to function as a repository of reviewable
               information. Start with the data, then move to the paper if the
               pattern looks credible enough to examine in full.
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
               <Link
                 href="/data"
                 className="bg-stone-900 px-6 py-3 text-sm font-medium text-stone-50 transition-colors hover:bg-stone-800"
@@ -81,130 +108,146 @@ export default function Home() {
               </Link>
               <Link
                 href="/paper"
-                className="border border-stone-300 px-6 py-3 text-sm font-medium text-stone-700 transition-colors hover:border-stone-900 hover:text-stone-900"
+                className="text-sm font-medium text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-900"
               >
                 Read the paper
               </Link>
             </div>
+            <p className="mt-8 max-w-xl text-sm leading-7 text-stone-500">
+              Begin with the repository of claims and sources. Move into the
+              paper once the evidence feels sturdy enough to test.
+            </p>
           </div>
 
-          <aside className="border border-stone-200 bg-white p-6">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-400">
-              Start here
-            </p>
-            <ol className="mt-5 space-y-5 text-sm text-stone-600">
-              {[
-                "Review the core data points and sources.",
-                "Read the full paper if the case is worth testing.",
-                "Follow the article stream as the project develops.",
-              ].map((item, index) => (
-                <li key={item} className="flex gap-3 leading-relaxed">
-                  <span className="font-mono text-xs text-stone-300">
-                    0{index + 1}
-                  </span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ol>
-            <div className="mt-6 border-t border-stone-100 pt-5 text-sm text-stone-500 leading-relaxed">
-              The aim is not volume. It is a usable archive of claims, sources,
-              and interpretation that people can inspect without noise.
+          <aside className="md:border-l md:border-stone-200 md:pl-8">
+            <div className="border-t border-stone-300 pt-5">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-500">
+                Start here
+              </p>
+              <ol className="mt-5 space-y-5 text-sm leading-7 text-stone-600">
+                {[
+                  "Review the core data points and sources.",
+                  "Read the full paper if the case is worth testing.",
+                  "Follow the article stream as the project develops.",
+                ].map((item, index) => (
+                  <li key={item} className="flex gap-3">
+                    <span className="font-mono text-xs text-stone-400">
+                      0{index + 1}
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <div className="mt-8 bg-stone-100/80 px-5 py-5">
+              <p className="text-sm leading-7 text-stone-600">
+                The aim is not volume. It is a usable archive of claims,
+                sources, and interpretation that people can inspect without
+                noise.
+              </p>
             </div>
           </aside>
         </div>
       </section>
 
-      <section className="border-b border-stone-200 py-16">
-        <div className="mb-8 max-w-2xl">
-          <p className="text-xs font-medium uppercase tracking-widest text-stone-400 mb-3">
+      <section className="border-b border-stone-200 py-16 md:py-20">
+        <div className="mb-10 max-w-2xl">
+          <p className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-stone-500">
             How to use the site
           </p>
           <h2 className="font-display text-3xl font-semibold text-stone-900">
             A simple way to evaluate the thesis.
           </h2>
+          <p className="mt-4 text-base leading-8 text-stone-600">
+            The site works best when read in order: evidence first, then the
+            longer argument, then the shorter essays that extend it.
+          </p>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-3 md:gap-10">
           {pathways.map((path) => (
-            <div key={path.title} className="border border-stone-200 bg-white p-6">
+            <article key={path.title} className="border-t border-stone-200 pt-5">
               <h3 className="font-display text-xl font-semibold text-stone-900">
                 {path.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-stone-500">
+              <p className="mt-3 text-sm leading-7 text-stone-600">
                 {path.description}
               </p>
               <Link
                 href={path.href}
-                className="mt-6 inline-block text-sm font-medium text-stone-900 border-b border-stone-300 pb-0.5 hover:border-stone-900 transition-colors"
+                className="mt-5 inline-block text-sm font-medium text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-900"
               >
                 {path.cta}
               </Link>
-            </div>
+            </article>
           ))}
         </div>
       </section>
 
-      <section className="py-16 border-b border-stone-200">
+      <section className="border-b border-stone-200 py-16 md:py-20">
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <h2 className="text-xs font-medium text-stone-400 uppercase tracking-widest mb-3">
+          <div className="max-w-2xl">
+            <p className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-stone-500">
               The numbers behind the thesis
+            </p>
+            <h2 className="font-display text-3xl font-semibold text-stone-900">
+              A small sample from the data repository.
             </h2>
-            <p className="max-w-2xl text-sm leading-relaxed text-stone-500">
-              A small sample from the data repository. The full page carries the
-              longer explanations and source trails.
+            <p className="mt-4 text-sm leading-7 text-stone-600">
+              The full data page carries the longer explanations and source
+              trails. These figures show the type of reference points the case
+              is built on.
             </p>
           </div>
           <Link
             href="/data"
-            className="text-sm text-stone-500 hover:text-stone-900 transition-colors"
+            className="text-sm font-medium text-stone-600 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-900"
           >
             Open the full data repository →
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <DataWidget
-            label="M2 Money Supply"
-            sublabel="Since Jan 2020"
-            value="+40%"
-            description="The Fed expanded the money supply by 40% in two years — the fastest in modern history. Prices followed."
-            source="Federal Reserve"
-          />
-          <DataWidget
-            label="Purchasing Power"
-            sublabel="USD, 2000–2024"
-            value="−30%"
-            description="A dollar today buys what 70 cents bought in 2000. The slow erosion of ordinary savings."
-            source="BLS CPI-U"
-          />
-          <DataWidget
-            label="CPI (All Items)"
-            sublabel="2020–2024 cumulative"
-            value="+22%"
-            description="Official inflation since the pandemic. Shelter, food, and energy have run significantly higher."
-            source="Bureau of Labor Statistics"
-          />
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {dataHighlights.map((item) => (
+            <article key={item.label} className="border border-stone-200 bg-white p-6">
+              <div className="mb-4 flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-stone-500">
+                    {item.label}
+                  </p>
+                  <p className="mt-0.5 text-xs text-stone-400">{item.sublabel}</p>
+                </div>
+                <span className="font-display text-2xl font-semibold text-stone-900">
+                  {item.value}
+                </span>
+              </div>
+              <p className="text-sm leading-7 text-stone-600">{item.description}</p>
+              <p className="mt-4 text-xs text-stone-400">Source: {item.source}</p>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section className="py-16 border-b border-stone-200">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
-          <div className="md:col-span-3">
-            <h2 className="font-display text-3xl font-semibold mb-6 text-stone-900">
+      <section className="border-b border-stone-200 py-16 md:py-20">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,1.55fr)_minmax(260px,0.95fr)]">
+          <div>
+            <p className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-stone-500">
               What the paper argues
+            </p>
+            <h2 className="font-display text-3xl font-semibold text-stone-900">
+              A theological reading of the present moment.
             </h2>
-            <div className="space-y-4 text-stone-600 leading-relaxed">
+            <div className="mt-6 space-y-5 text-stone-700 leading-8">
               <p>
                 The Exodus narrative in Scripture is more than history. It is a
                 paradigm — the shape of how God moves when his people are
                 trapped under oppressive systems. Brueggemann called it the
-                "core testimony" of Israel's faith.
+                "core testimony" of Israel&apos;s faith.
               </p>
               <p>
-                The thesis is that present-day conditions — economic extraction,
-                institutional decay, and the slow erosion of the commons — map
-                onto the Exodus pattern with striking precision. We are in a
-                moment of structured oppression. The question is whether the
-                church will recognize the season.
+                The thesis is that present-day conditions — economic
+                extraction, institutional decay, and the slow erosion of the
+                commons — map onto the Exodus pattern with striking precision.
+                We are in a moment of structured oppression. The question is
+                whether the church will recognize the season.
               </p>
               <p>
                 Exodus 6:9 records that the people could not hear Moses because
@@ -216,99 +259,106 @@ export default function Home() {
             </div>
             <Link
               href="/paper"
-              className="inline-block mt-8 text-sm font-medium text-stone-900 border-b border-stone-400 pb-0.5 hover:border-stone-900 transition-colors"
+              className="mt-8 inline-block text-sm font-medium text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-900"
             >
               Read the full paper →
             </Link>
           </div>
-          <div className="md:col-span-2 space-y-6">
-            <div className="bg-stone-100 p-6">
-              <p className="text-sm font-medium text-stone-400 uppercase tracking-wider mb-3">
+
+          <div className="space-y-8">
+            <div className="bg-stone-100/80 p-6">
+              <p className="mb-3 text-sm font-medium uppercase tracking-[0.18em] text-stone-500">
                 What this project is for
               </p>
-              <ul className="space-y-3 text-sm leading-relaxed text-stone-600">
-              <li>Give the church a legible account of the present moment.</li>
+              <ul className="space-y-3 text-sm leading-7 text-stone-600">
+                <li>Give the church a legible account of the present moment.</li>
                 <li>Maintain reviewable evidence and current reference points.</li>
                 <li>Offer theological reflection without diluting urgency.</li>
               </ul>
             </div>
-            <div className="bg-stone-100 p-6">
-              <p className="text-sm font-medium text-stone-400 uppercase tracking-wider mb-3">
+
+            <div className="border-t border-stone-200 pt-5">
+              <p className="text-sm font-medium uppercase tracking-[0.18em] text-stone-500">
                 Key Scripture
               </p>
-              <blockquote className="font-display text-lg text-stone-700 italic leading-relaxed">
+              <blockquote className="mt-4 font-display text-[1.35rem] italic leading-relaxed text-stone-800">
                 "They did not listen to Moses, because of their broken spirit
                 and harsh slavery."
               </blockquote>
-              <p className="text-sm text-stone-400 mt-3">Exodus 6:9</p>
+              <p className="mt-3 text-sm text-stone-500">Exodus 6:9</p>
             </div>
-            <div className="bg-stone-100 p-6">
-              <p className="text-sm font-medium text-stone-400 uppercase tracking-wider mb-3">
+
+            <div className="border-t border-stone-200 pt-5">
+              <p className="text-sm font-medium uppercase tracking-[0.18em] text-stone-500">
                 The Pattern
               </p>
-              <ol className="space-y-2 text-sm text-stone-600">
-                {["Oppression", "Cry", "Deliverance", "Covenant", "Wilderness", "Promised Land"].map(
-                  (step, i) => (
-                    <li key={step} className="flex items-center gap-3">
-                      <span className="text-stone-300 font-mono text-xs">
-                        0{i + 1}
-                      </span>
-                      <span>{step}</span>
-                    </li>
-                  )
-                )}
+              <ol className="mt-4 space-y-3 text-sm leading-7 text-stone-600">
+                {[
+                  "Oppression",
+                  "Cry",
+                  "Deliverance",
+                  "Covenant",
+                  "Wilderness",
+                  "Promised Land",
+                ].map((step, i) => (
+                  <li key={step} className="flex items-center gap-3">
+                    <span className="font-mono text-xs text-stone-400">
+                      0{i + 1}
+                    </span>
+                    <span>{step}</span>
+                  </li>
+                ))}
               </ol>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="flex items-baseline justify-between mb-8">
+      <section className="py-16 md:py-20">
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 className="font-display text-2xl font-semibold text-stone-900">
               Recent articles
             </h2>
-            <p className="mt-2 text-sm leading-relaxed text-stone-500 max-w-xl">
-              Essays are still forthcoming, but the lanes are defined: economics,
-              theology, and formation.
+            <p className="mt-2 max-w-xl text-sm leading-7 text-stone-600">
+              Essays are still forthcoming, but the lanes are defined:
+              economics, theology, and formation.
             </p>
           </div>
           <Link
             href="/articles"
-            className="text-sm text-stone-500 hover:text-stone-900 transition-colors"
+            className="text-sm font-medium text-stone-600 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-900"
           >
             All articles →
           </Link>
         </div>
-        <div className="space-y-8">
+
+        <div className="mt-8 space-y-8">
           {articlePreviews.map((article) => (
-            <div
+            <article
               key={article.title}
-              className="border-t border-stone-200 pt-8 grid grid-cols-1 gap-3 md:grid-cols-5 md:gap-6"
+              className="grid grid-cols-1 gap-3 border-t border-stone-200 pt-8 md:grid-cols-5 md:gap-6"
             >
               <div className="md:col-span-1">
-                <span className="text-xs font-medium text-stone-400 uppercase tracking-wider">
+                <span className="text-xs font-medium uppercase tracking-[0.18em] text-stone-500">
                   {article.category}
                 </span>
               </div>
               <div className="md:col-span-4">
-                <h3 className="font-display text-lg font-semibold text-stone-900 mb-2">
+                <h3 className="mb-2 font-display text-lg font-semibold text-stone-900">
                   {article.title}
                 </h3>
-                <p className="text-stone-500 text-sm leading-relaxed">
-                  {article.excerpt}
-                </p>
-                <span className="text-xs text-stone-300 mt-3 block">
+                <p className="text-sm leading-7 text-stone-600">{article.excerpt}</p>
+                <span className="mt-3 block text-xs text-stone-400">
                   {article.date}
                 </span>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
-        <div className="mt-16 border border-stone-200 bg-white p-8 md:p-10">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-400">
+        <div className="mt-16 border-t border-stone-300 pt-8 md:pt-10">
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-stone-500">
             Primary invitation
           </p>
           <div className="mt-4 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -316,13 +366,13 @@ export default function Home() {
               <h2 className="font-display text-3xl font-semibold text-stone-900">
                 Start with the evidence. Then read the whole argument.
               </h2>
-              <p className="mt-3 text-stone-500 leading-relaxed">
+              <p className="mt-3 text-base leading-8 text-stone-600">
                 The homepage should let visitors inspect the underlying material
                 first. If the data raises the right questions, the paper is the
                 next move.
               </p>
             </div>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
               <Link
                 href="/data"
                 className="bg-stone-900 px-6 py-3 text-sm font-medium text-stone-50 transition-colors hover:bg-stone-800"
@@ -331,7 +381,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/paper"
-                className="px-6 py-3 text-sm font-medium text-stone-700 border border-stone-300 transition-colors hover:border-stone-900 hover:text-stone-900"
+                className="text-sm font-medium text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-900"
               >
                 Read the paper
               </Link>
